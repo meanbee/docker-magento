@@ -9,5 +9,4 @@ RUN build_packages="libmcrypt-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-
     && docker-php-ext-install mbstring \
     && docker-php-ext-install mcrypt \
     && docker-php-ext-install pcntl \
-    && docker-php-ext-install pdo_mysql \
-    && apt-get purge --auto-remove -y $build_packages
+    && docker-php-ext-install pdo_mysql
