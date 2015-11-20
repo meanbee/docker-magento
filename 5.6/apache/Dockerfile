@@ -13,3 +13,5 @@ RUN build_packages="libmcrypt-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-
     && docker-php-ext-install soap
 
 RUN a2enmod rewrite
+
+COPY magento.conf /etc/apache2/conf-enabled/
