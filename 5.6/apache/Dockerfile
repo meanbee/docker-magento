@@ -15,3 +15,5 @@ RUN build_packages="libmcrypt-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-
 RUN a2enmod rewrite headers
 
 COPY magento.conf /etc/apache2/conf-enabled/
+
+COPY php.ini /usr/local/etc/php/conf.d/zz-magento.ini

@@ -11,3 +11,5 @@ RUN build_packages="libmcrypt-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-
     && docker-php-ext-install pcntl \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install soap
+
+COPY php.ini /usr/local/etc/php/conf.d/zz-magento.ini
