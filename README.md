@@ -29,7 +29,7 @@ A sample `docker-compose.yml` configuration:
         - 443
       links:
         - db
-    
+
     db:
       image: mysql/mysql-server:5.6
       environment:
@@ -46,3 +46,15 @@ Xdebug is installed and enabled on all the images by default. To configure it fo
 the container with the following environment variable set (replacing the `{}` placeholders with appropriate values):
 
     XDEBUG_CONFIG="remote_host={IP_ADDRESS} idekey={IDEKEY}"
+
+# Building
+
+A lot of the configuration for each image is the same, with the difference being the base image that they're extending from.  For this reason `m4` is used as a templating engine to include partials stored in `lib/` into the `Dockerfile`.  The `Dockerfile` should still be published to the repository due to Docker Hub needing a `Dockerfile` to build from.
+
+To build all `Dockerfile`s use make:
+
+    make
+
+To build a specific `Dockerfile`, use make with the path to the `Dockerfile`, e.g.:
+
+    make 7.0/apache/Dockerfile

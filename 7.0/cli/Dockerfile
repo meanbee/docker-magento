@@ -12,6 +12,7 @@ RUN build_packages="libmcrypt-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install soap
 
-RUN yes | pecl install xdebug-2.4.0RC3 && docker-php-ext-enable xdebug
+RUN yes | pecl install xdebug && docker-php-ext-enable xdebug
 
 COPY php.ini /usr/local/etc/php/conf.d/zz-magento.ini
+
