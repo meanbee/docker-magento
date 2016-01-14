@@ -3,8 +3,3 @@ date.timezone=UTC
 
 ; Magento recommended memory setting
 memory_limit=512M
-
-; Xdebug settings
-xdebug.remote_enable=1
-xdebug.remote_autostart=0
-
