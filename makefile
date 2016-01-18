@@ -8,6 +8,9 @@ all: */*/Dockerfile
 5.5/cli/Dockerfile: 5.5/cli/Dockerfile.m4 5.5/cli/php.ini $(TEMPLATE_LIB)
 	m4 -I ./lib $@.m4 > $@
 
+5.5/fpm/Dockerfile: 5.5/fpm/Dockerfile.m4 5.5/fpm/php.ini $(TEMPLATE_LIB)
+	m4 -I ./lib $@.m4 > $@
+
 5.5/apache/Dockerfile: 5.5/apache/Dockerfile.m4 5.5/apache/php.ini 5.5/apache/magento.conf $(TEMPLATE_LIB)
 	m4 -I ./lib $@.m4 > $@
 
