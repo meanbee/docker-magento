@@ -17,6 +17,9 @@ all: */*/Dockerfile
 5.6/cli/Dockerfile: 5.6/cli/Dockerfile.m4 5.6/cli/php.ini $(TEMPLATE_LIB)
 	m4 -I ./lib $@.m4 > $@
 
+5.6/fpm/Dockerfile: 5.6/fpm/Dockerfile.m4 5.6/fpm/php.ini $(TEMPLATE_LIB)
+	m4 -I ./lib $@.m4 > $@
+
 5.6/apache/Dockerfile: 5.6/apache/Dockerfile.m4 5.6/apache/php.ini 5.6/apache/magento.conf $(TEMPLATE_LIB)
 	m4 -I ./lib $@.m4 > $@
 
