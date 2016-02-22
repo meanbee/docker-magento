@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+[ "$DEBUG" = "true" ] && set -x
+
+
+# Start sendmail
+/etc/init.d/sendmail start
+
+# Execute the supplied command
+exec "$@"
+
