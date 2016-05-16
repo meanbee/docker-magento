@@ -7,4 +7,5 @@ RUN build_packages="libmcrypt-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-
     && docker-php-ext-install mcrypt \
     && docker-php-ext-install pcntl \
     && docker-php-ext-install pdo_mysql \
-    && docker-php-ext-install soap
+    && docker-php-ext-install soap \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

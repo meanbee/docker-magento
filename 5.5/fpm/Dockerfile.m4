@@ -7,7 +7,6 @@ include(`dockerfile/xdebug.m4')
 include(`dockerfile/cron.m4')
 include(`dockerfile/sendmail.m4')
 include(`dockerfile/php-ini.m4')
-include(`dockerfile/cleanup.m4')
 
 include(`dockerfile/entrypoint.m4')
 include(`dockerfile/cmd-fpm.m4')

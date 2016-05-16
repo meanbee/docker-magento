@@ -11,7 +11,8 @@ RUN build_packages="libmcrypt-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-
     && docker-php-ext-install mcrypt \
     && docker-php-ext-install pcntl \
     && docker-php-ext-install pdo_mysql \
-    && docker-php-ext-install soap
+    && docker-php-ext-install soap \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN yes | pecl install xdebug && docker-php-ext-enable xdebug
 
@@ -24,9 +25,6 @@ RUN apt-get update \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY php.ini /usr/local/etc/php/conf.d/zz-magento.ini
-
-RUN apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
 ADD entrypoint /entrypoint
