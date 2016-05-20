@@ -1,2 +1,2 @@
-ADD entrypoint /entrypoint
-ENTRYPOINT ["/entrypoint"]
+ADD entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]

@@ -27,8 +27,8 @@ RUN apt-get update \
 COPY php.ini /usr/local/etc/php/conf.d/zz-magento.ini
 
 
-ADD entrypoint /entrypoint
-ENTRYPOINT ["/entrypoint"]
+ADD entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
 
 CMD ["php-fpm"]
 
