@@ -2,7 +2,7 @@ FROM php:5.5-fpm
 
 MAINTAINER Tomas Gerulaitis <tomas.gerulaitis@meanbee.com>
 
-RUN build_packages="libmcrypt-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-dev libxml2-dev libmemcached-dev" \
+RUN build_packages="libmcrypt-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-dev libxml2-dev libmemcached-dev sendmail-bin sendmail" \
     && apt-get update && apt-get install -y $build_packages \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && echo "no" | pecl install memcached && docker-php-ext-enable memcached \
@@ -18,10 +18,6 @@ RUN yes | pecl install xdebug && docker-php-ext-enable xdebug
 
 RUN apt-get update \
     && apt-get install -y cron \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-RUN apt-get update \
-    && apt-get install -y sendmail-bin sendmail \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY php.ini /usr/local/etc/php/conf.d/zz-magento.ini

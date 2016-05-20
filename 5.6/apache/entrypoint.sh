@@ -2,6 +2,9 @@
 
 [ "$DEBUG" = "true" ] && set -x
 
+# Start sendmail
+/etc/init.d/sendmail start
+
 # Configure Xdebug
 if [ "$XDEBUG_CONFIG" ]; then
     echo "" > /usr/local/etc/php/conf.d/zz-xdebug.ini
