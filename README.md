@@ -22,6 +22,7 @@ A sample `docker-compose.yml` configuration:
 
     web:
       image: meanbee/magento:5.6-apache
+      hostname: magento.docker
       environment:
         - DOCKER_FIX=
         - VIRTUAL_HOST=magento.docker
