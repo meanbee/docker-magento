@@ -35,6 +35,14 @@ echo "PHP Version: $PHP_VERSION"
 echo "Image Flavour: $IMAGE_FLAVOUR"
 
 ################################################################################
+# Pull published image down so we can try and reuse layers
+################################################################################
+echo ""
+echo "Pulling published images for layer cache.."
+echo ""
+docker pull meanbee/magento:${PHP_VERSION}-${IMAGE_FLAVOUR}
+
+################################################################################
 # Build our images
 ################################################################################
 echo ""
