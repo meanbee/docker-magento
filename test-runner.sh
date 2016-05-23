@@ -66,8 +66,9 @@ echo ""
 echo "Running cli tests:"
 echo ""
 
-docker run -h test.host --volume $TEST_DIR:/test $IMAGE_NAME php /test/test.php \
-  | grep --context=1000 "$TEST_OK_STRING" || exit 1
+docker run -h test.host --volume $TEST_DIR:/test $IMAGE_NAME php /test/test.php  | tee /tmp/test.log
+grep "$TEST_OK_STRING" /tmp/test.log > /dev/null || exit 1
+rm -f /tmp/test.log
 
 ################################################################################
 # Run web server tests on apache image
@@ -88,11 +89,14 @@ if [ "$IMAGE_FLAVOUR" == "apache" ]; then
 
   while (( $attempt < $max_attempts ))
   do
-    curl $DOCKER_IP:$TEST_PORT/test.php \
-      | grep --context=1000 "$TEST_OK_STRING"
+    curl $DOCKER_IP:$TEST_PORT/test.php | tee /tmp/test.log
+    grep "$TEST_OK_STRING" /tmp/test.log > /dev/null
+    curl_result=$?
+
+    rm -f /tmp/test.log
 
     # Wait for a zero exit code before stopping
-    if [[ $? == 0 ]]
+    if [[ $curl_result == 0 ]]
     then
       break
     fi
