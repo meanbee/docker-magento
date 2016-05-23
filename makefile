@@ -27,11 +27,11 @@ all: */*/Dockerfile
 5.6/apache/Dockerfile: 5.6/apache/Dockerfile.m4 5.6/apache/php.ini 5.6/apache/magento.conf 5.6/apache/entrypoint.sh $(TEMPLATE_LIB)
 	m4 -I ./lib $@.m4 > $@
 
-7.0/cli/Dockerfile: 7.0/cli/Dockerfile.m4 7.0/cli/php.ini $(TEMPLATE_LIB)
+7.0/cli/Dockerfile: 7.0/cli/Dockerfile.m4 7.0/cli/php.ini 7.0/cli/entrypoint.sh $(TEMPLATE_LIB)
 	m4 -I ./lib $@.m4 > $@
 
-7.0/apache/Dockerfile: 7.0/apache/Dockerfile.m4 7.0/apache/php.ini 7.0/apache/magento.conf $(TEMPLATE_LIB)
+7.0/apache/Dockerfile: 7.0/apache/Dockerfile.m4 7.0/apache/php.ini 7.0/apache/magento.conf 7.0/apache/entrypoint.sh $(TEMPLATE_LIB)
 	m4 -I ./lib $@.m4 > $@
 
-7.0/fpm/Dockerfile: 7.0/fpm/Dockerfile.m4 7.0/fpm/php.ini $(TEMPLATE_LIB)
+7.0/fpm/Dockerfile: 7.0/fpm/Dockerfile.m4 7.0/fpm/php.ini 7.0/fpm/entrypoint.sh $(TEMPLATE_LIB)
 	m4 -I ./lib $@.m4 > $@

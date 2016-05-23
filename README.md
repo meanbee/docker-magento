@@ -42,6 +42,10 @@ A sample `docker-compose.yml` configuration:
       ports:
         - 3306
 
+    cron:
+      image: meanbee/magento:5.6-cli
+      command: bash -c "cron && tail -f /var/log/cron.log"
+
 # Options
 
 ## Xdebug

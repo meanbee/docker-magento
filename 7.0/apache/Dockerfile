@@ -21,3 +21,9 @@ RUN a2enmod rewrite headers
 
 COPY magento.conf /etc/apache2/conf-enabled/
 
+
+ADD entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
+CMD ["apache2-foreground"]
+
