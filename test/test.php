@@ -37,7 +37,8 @@ $required_extensions = array(
   'pcre',
   'pdo',
   'pdo_mysql',
-  'simplexml'
+  'simplexml',
+  'xsl'
 );
 
 foreach ($required_extensions as $extension) {
