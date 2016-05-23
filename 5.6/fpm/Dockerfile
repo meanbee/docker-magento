@@ -19,10 +19,6 @@ RUN apt-get update \
 
 RUN yes | pecl install xdebug && docker-php-ext-enable xdebug
 
-RUN apt-get update \
-    && apt-get install -y cron \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
 COPY php.ini /usr/local/etc/php/conf.d/zz-magento.ini
 
 
