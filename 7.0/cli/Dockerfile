@@ -14,7 +14,7 @@ RUN build_packages="libmcrypt-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-
     && docker-php-ext-install xsl \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN yes | pecl install xdebug-2.4.0RC3 && docker-php-ext-enable xdebug
+RUN yes | pecl install xdebug && docker-php-ext-enable xdebug
 
 RUN apt-get update \
     && apt-get install -y cron rsyslog \
