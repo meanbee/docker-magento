@@ -104,4 +104,11 @@ if [ "$IMAGE_FLAVOUR" == "apache" ]; then
     sleep $timeout
     attempt=$(( attempt + 1 ))
   done
+
+  if [ "$attempt" -eq "$max_attempts" ]; then
+    echo ""
+    echo "Reached maximum web server connnection attempts"
+    echo ""
+    exit 1
+  fi
 fi
