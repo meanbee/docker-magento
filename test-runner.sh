@@ -57,7 +57,7 @@ cd ../..
 echo ""
 echo "Image PHP Version:"
 echo ""
-docker run $IMAGE_NAME php --version || exit 1
+docker run -h test.host $IMAGE_NAME php --version || exit 1
 
 ################################################################################
 # Run CLI tests on all images
@@ -66,7 +66,7 @@ echo ""
 echo "Running cli tests:"
 echo ""
 
-docker run --volume $TEST_DIR:/test $IMAGE_NAME php /test/test.php \
+docker run -h test.host --volume $TEST_DIR:/test $IMAGE_NAME php /test/test.php \
   | grep --context=1000 "$TEST_OK_STRING" || exit 1
 
 ################################################################################
@@ -78,7 +78,7 @@ if [ "$IMAGE_FLAVOUR" == "apache" ]; then
   echo ""
 
   # Start the web server
-  docker run -d --volume $TEST_DIR:/var/www/html -p $TEST_PORT:80 $IMAGE_NAME || exit 1
+  docker run -h test.host -d --volume $TEST_DIR:/var/www/html -p $TEST_PORT:80 $IMAGE_NAME || exit 1
   echo ""
 
   # Spent up to a minute trying to connect to the web server
