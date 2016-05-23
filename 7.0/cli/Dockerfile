@@ -16,7 +16,7 @@ RUN build_packages="libmcrypt-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-
 RUN yes | pecl install xdebug-2.4.0RC3 && docker-php-ext-enable xdebug
 
 RUN apt-get update \
-    && apt-get install -y cron \
+    && apt-get install -y cron rsyslog \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY php.ini /usr/local/etc/php/conf.d/zz-magento.ini

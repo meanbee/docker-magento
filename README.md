@@ -44,7 +44,7 @@ A sample `docker-compose.yml` configuration:
 
     cron:
       image: meanbee/magento:5.6-cli
-      command: cron -f
+      command: bash -c "cron && tail -f /var/log/cron.log"
 
 # Options
 
