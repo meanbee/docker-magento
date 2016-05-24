@@ -38,7 +38,8 @@ $required_extensions = array(
   'pdo',
   'pdo_mysql',
   'simplexml',
-  'xsl'
+  'xsl',
+  'xdebug'
 );
 
 foreach ($required_extensions as $extension) {
