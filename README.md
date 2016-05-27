@@ -44,7 +44,12 @@ A sample `docker-compose.yml` configuration:
 
     cron:
       image: meanbee/magento:5.6-cli
-      command: bash -c "cron && tail -f /var/log/cron.log"
+      hostname: magento-cron.docker
+      command: /run-cron.sh
+      volumes:
+        - ./src:/var/www/html
+      links:
+        - db
 
 # Options
 
