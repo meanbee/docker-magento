@@ -26,6 +26,7 @@ A sample `docker-compose.yml` configuration:
       environment:
         - DOCKER_FIX=
         - VIRTUAL_HOST=magento.docker
+        - ENABLE_SENDMAIL=true
       volumes:
         - ./src:/var/www/html
       ports:
@@ -46,12 +47,22 @@ A sample `docker-compose.yml` configuration:
       image: meanbee/magento:5.6-cli
       hostname: magento-cron.docker
       command: /run-cron.sh
+      environment:
+        - ENABLE_SENDMAIL=true
       volumes:
         - ./src:/var/www/html
       links:
         - db
 
 # Options
+
+## Sendmail
+
+All images have sendmail installed for emails, however it is not enabled by default. To enable sendmail, use the following environment variable:
+
+    ENABLE_SENDMAIL=true
+
+*Note:* If sendmail has been enabled, make sure the container has a hostname assigned using the `hostname` field in `docker-compose.yml` or `--hostname` parameter for `docker run`. If the container does not have a hostname set, sendmail will attempt to discover the hostname on startup, blocking for a prolonged period of time.
 
 ## Xdebug
 

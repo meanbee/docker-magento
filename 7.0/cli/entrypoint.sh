@@ -12,8 +12,10 @@ touch $CRON_LOG
 echo "cron.* $CRON_LOG" > /etc/rsyslog.d/cron.conf
 service rsyslog start
 
-# Start sendmail
-/etc/init.d/sendmail start
+# Configure Sendmail if required
+if [ "$ENABLE_SENDMAIL" == "true" ]; then
+    /etc/init.d/sendmail start
+fi
 
 # Configure Xdebug
 if [ "$XDEBUG_CONFIG" ]; then
