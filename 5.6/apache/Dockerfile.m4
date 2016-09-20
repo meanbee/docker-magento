@@ -2,9 +2,6 @@ FROM php:5.6-apache
 
 MAINTAINER Tomas Gerulaitis <tomas.gerulaitis@meanbee.com>
 
-ENV PHP_MAJOR_VERSION 5
-ENV PHP_MINOR_VERSION 6
-
 include(`dockerfile/extensions.m4')
 include(`dockerfile/memcached.m4')
 include(`dockerfile/xdebug.m4')
@@ -13,6 +10,7 @@ include(`dockerfile/apache.m4')
 
 ENV PHP_MAJOR_VERSION 5
 ENV PHP_MINOR_VERSION 6
+ENV PHP_EXTENSION_DIR "/usr/local/lib/php/extensions/no-debug-non-zts-20131226"
 include(`dockerfile/ioncube-loader.m4')
 
 include(`dockerfile/entrypoint.m4')

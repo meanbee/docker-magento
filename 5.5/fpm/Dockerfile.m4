@@ -9,6 +9,7 @@ include(`dockerfile/php-ini.m4')
 
 ENV PHP_MAJOR_VERSION 5
 ENV PHP_MINOR_VERSION 5
+ENV PHP_EXTENSION_DIR "/usr/local/lib/php/extensions/no-debug-non-zts-20121212"
 include(`dockerfile/ioncube-loader.m4')
 
 include(`dockerfile/entrypoint.m4')

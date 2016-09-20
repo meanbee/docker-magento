@@ -2,9 +2,6 @@ FROM php:5.6-apache
 
 MAINTAINER Tomas Gerulaitis <tomas.gerulaitis@meanbee.com>
 
-ENV PHP_MAJOR_VERSION 5
-ENV PHP_MINOR_VERSION 6
-
 RUN build_packages="libmcrypt-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-dev libxml2-dev libxslt1-dev libmemcached-dev sendmail-bin sendmail" \
     && apt-get update && apt-get install -y $build_packages \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
@@ -33,7 +30,6 @@ COPY magento.conf /etc/apache2/conf-enabled/
 ENV PHP_MAJOR_VERSION 5
 ENV PHP_MINOR_VERSION 6
 ENV PHP_EXTENSION_DIR "/usr/local/lib/php/extensions/no-debug-non-zts-20131226"
-
 RUN curl http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64_5.1.2.tar.gz -o /ioncube_loaders_lin_x86-64_5.1.2.tar.gz && \
     tar -xzvf /ioncube_loaders_lin_x86-64_5.1.2.tar.gz -C / && \
     cp "/ioncube/ioncube_loader_lin_${PHP_MAJOR_VERSION}.${PHP_MINOR_VERSION}.so" $PHP_EXTENSION_DIR && \
