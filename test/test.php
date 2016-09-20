@@ -40,7 +40,7 @@ $required_extensions = array(
   'simplexml',
   'xsl',
   'xdebug',
-  'IonCube Loader'
+  'IonCube Loader',
 );
 
 foreach ($required_extensions as $extension) {
