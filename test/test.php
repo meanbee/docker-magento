@@ -39,7 +39,8 @@ $required_extensions = array(
   'pdo_mysql',
   'simplexml',
   'xsl',
-  'xdebug'
+  'xdebug',
+  'IonCube Loader',
 );
 
 foreach ($required_extensions as $extension) {
