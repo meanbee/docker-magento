@@ -7,8 +7,7 @@ include(`dockerfile/memcached.m4')
 include(`dockerfile/xdebug.m4')
 include(`dockerfile/php-ini.m4')
 
-ENV PHP_MAJOR_VERSION 5
-ENV PHP_MINOR_VERSION 5
+ENV ION_CUBE_PHP_VERSION "5.5"
 ENV PHP_EXTENSION_DIR "/usr/local/lib/php/extensions/no-debug-non-zts-20121212"
 include(`dockerfile/ioncube-loader.m4')
 
