@@ -41,6 +41,8 @@ $required_extensions = array(
   'xsl',
   'xdebug',
   'IonCube Loader',
+  'zip',
+  'intl'
 );
 
 foreach ($required_extensions as $extension) {
