@@ -2,6 +2,7 @@ FROM php:7.0-fpm
 
 MAINTAINER Tomas Gerulaitis <tomas.gerulaitis@meanbee.com>
 
+ENV PHP_EXT_APCU_VERSION "5.1.7"
 include(`dockerfile/extensions.m4')
 include(`dockerfile/xdebug.m4')
 include(`dockerfile/php-ini.m4')

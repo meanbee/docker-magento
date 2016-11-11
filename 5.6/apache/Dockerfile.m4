@@ -2,6 +2,7 @@ FROM php:5.6-apache
 
 MAINTAINER Tomas Gerulaitis <tomas.gerulaitis@meanbee.com>
 
+ENV PHP_EXT_APCU_VERSION "4.0.11"
 include(`dockerfile/extensions.m4')
 include(`dockerfile/memcached.m4')
 include(`dockerfile/xdebug.m4')
