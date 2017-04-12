@@ -73,12 +73,33 @@ the container with the following environment variable set (replacing the `{}` pl
 
 # Building
 
-A lot of the configuration for each image is the same, with the difference being the base image that they're extending from.  For this reason `m4` is used as a templating engine to include partials stored in `lib/` into the `Dockerfile`.  The `Dockerfile` should still be published to the repository due to Docker Hub needing a `Dockerfile` to build from.
+A lot of the configuration for each image is the same, with the difference being the base image that they're extending from.  For this reason we use `php` to build the `Dockerfile` from a set of templates in `src/`.  The `Dockerfile` should still be published to the repository due to Docker Hub needing a `Dockerfile` to build from.
 
-To build all `Dockerfile`s use make:
+To build all `Dockerfile`s, run the `builder.php` script in the `php:7` Docker image:<!-- Yo dawg, I heard you like Docker images... -->
 
-    make
+    docker run --rm -it -v $(pwd):/src php:7 php /src/builder.php
 
-To build a specific `Dockerfile`, use make with the path to the `Dockerfile`, e.g.:
+## Adding new images to the build config
 
-    make 7.0/apache/Dockerfile
+The build configuration is controlled by the `config.json` file. Yeah element in the top level hash is a new build target, using the following syntax:
+
+    "<target-name>": {
+        "version": "<php-version>",
+        "flavour": "<image-flavour>",
+        "files": {
+            "<target-file-name>": {
+                "<template-variable-name>": "<template-variable-value>",
+                ...
+            },
+    }
+
+The target files will be rendered in the `<php-version>/<image-flavour>/` directory.
+
+The source template for each target file is selected from the `src/` directory using the following fallback order:
+
+1. `<target-file-name>-<php-version>-<image-flavour>`
+2. `<target-file-name>-<php-version>`
+3. `<target-file-name>-<image-flavour>`
+4. `<target-file-name>`
+
+Individual templates may include other templates as partials.

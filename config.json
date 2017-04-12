@@ -1,0 +1,152 @@
+{
+  "5.5-apache": {
+    "version": "5.5",
+    "flavour": "apache",
+    "files": {
+      "Dockerfile": {
+        "php_ext_acpu_version": "4.0.11",
+        "php_ext_memcached_version": "2.2.0",
+        "php_ext_ioncube_version": "5.5"
+      },
+      "entrypoint.sh": {
+        "executable": true
+      },
+      "magento.conf": {},
+      "php.ini": {}
+    }
+  },
+  "5.5-cli": {
+    "version": "5.5",
+    "flavour": "cli",
+    "files": {
+      "Dockerfile": {
+        "php_ext_acpu_version": "4.0.11",
+        "php_ext_memcached_version": "2.2.0",
+        "php_ext_ioncube_version": "5.5"
+      },
+      "entrypoint.sh": {
+        "include_cron": true,
+        "executable": true
+      },
+      "php.ini": {},
+      "run-cron.sh": {
+        "executable": true
+      }
+    }
+  },
+  "5.5-fpm": {
+    "version": "5.5",
+    "flavour": "fpm",
+    "files": {
+      "Dockerfile": {
+        "php_ext_acpu_version": "4.0.11",
+        "php_ext_memcached_version": "2.2.0",
+        "php_ext_ioncube_version": "5.5"
+      },
+      "entrypoint.sh": {
+        "executable": true
+      },
+      "php.ini": {}
+    }
+  },
+  "5.6-apache": {
+    "version": "5.6",
+    "flavour": "apache",
+    "files": {
+      "Dockerfile": {
+        "php_ext_acpu_version": "4.0.11",
+        "php_ext_memcached_version": "2.2.0",
+        "php_ext_ioncube_version": "5.6"
+      },
+      "entrypoint.sh": {
+        "executable": true
+      },
+      "magento.conf": {},
+      "php.ini": {}
+    }
+  },
+  "5.6-cli": {
+    "version": "5.6",
+    "flavour": "cli",
+    "files": {
+      "Dockerfile": {
+        "php_ext_acpu_version": "4.0.11",
+        "php_ext_memcached_version": "2.2.0",
+        "php_ext_ioncube_version": "5.6"
+      },
+      "entrypoint.sh": {
+        "include_cron": true,
+        "executable": true
+      },
+      "php.ini": {},
+      "run-cron.sh": {
+        "executable": true
+      }
+    }
+  },
+  "5.6-fpm": {
+    "version": "5.6",
+    "flavour": "fpm",
+    "files": {
+      "Dockerfile": {
+        "php_ext_acpu_version": "4.0.11",
+        "php_ext_memcached_version": "2.2.0",
+        "php_ext_ioncube_version": "5.6"
+      },
+      "entrypoint.sh": {
+        "executable": true
+      },
+      "php.ini": {}
+    }
+  },
+  "7.0-apache": {
+    "version": "7.0",
+    "flavour": "apache",
+    "files": {
+      "Dockerfile": {
+        "php_ext_acpu_version": "5.1.7",
+        "php_ext_memcached_version": "3.0.3",
+        "php_ext_ioncube_version": "7.0"
+      },
+      "entrypoint.sh": {
+        "executable": true
+      },
+      "magento.conf": {},
+      "php.ini": {}
+    }
+  },
+  "7.0-cli": {
+    "version": "7.0",
+    "flavour": "cli",
+    "files": {
+      "Dockerfile": {
+        "php_ext_acpu_version": "5.1.7",
+        "php_ext_memcached_version": "3.0.3",
+        "php_ext_ioncube_version": "7.0"
+      },
+      "entrypoint.sh": {
+        "include_cron": true,
+        "executable": true
+      },
+      "php.ini": {},
+      "run-cron.sh": {
+        "executable": true
+      }
+    }
+  },
+  "7.0-fpm": {
+    "version": "7.0",
+    "flavour": "fpm",
+    "files": {
+      "Dockerfile": {
+        "php_ext_acpu_version": "5.1.7",
+        "php_ext_memcached_version": "3.0.3",
+        "php_ext_ioncube_version": "7.0"
+      },
+      "entrypoint.sh": {
+        "executable": true
+      },
+      "php.ini": {}
+    }
+  }
+}
