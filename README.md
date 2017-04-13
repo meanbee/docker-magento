@@ -46,6 +46,7 @@ A sample `docker-compose.yml` configuration:
     cron:
       image: meanbee/magento:5.6-cli
       hostname: magento-cron.docker
+      working_dir: /var/www/html
       command: /run-cron.sh
       environment:
         - ENABLE_SENDMAIL=true
