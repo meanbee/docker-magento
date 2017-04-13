@@ -27,4 +27,3 @@ fi
 
 # Execute the supplied command
 exec "$@"
-
