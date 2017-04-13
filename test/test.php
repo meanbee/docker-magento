@@ -34,6 +34,7 @@ $required_extensions = array(
   'hash',
   'iconv',
   'mcrypt',
+  'memcached',
   'pcre',
   'pdo',
   'pdo_mysql',
