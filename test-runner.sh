@@ -57,7 +57,7 @@ cd ../..
 echo ""
 echo "Image PHP Version:"
 echo ""
-docker run -h test.host $IMAGE_NAME php --version || exit 1
+docker run --rm -h test.host $IMAGE_NAME php --version || exit 1
 
 ################################################################################
 # Run CLI tests on all images
@@ -66,7 +66,7 @@ echo ""
 echo "Running cli tests:"
 echo ""
 
-docker run -h test.host --volume $TEST_DIR:/test $IMAGE_NAME php /test/test.php  | tee /tmp/test.log
+docker run --rm -h test.host --volume $TEST_DIR:/test $IMAGE_NAME php /test/test.php  | tee /tmp/test.log
 grep "$TEST_OK_STRING" /tmp/test.log > /dev/null || exit 1
 rm -f /tmp/test.log
 
@@ -79,7 +79,7 @@ if [ "$IMAGE_FLAVOUR" == "apache" ]; then
   echo ""
 
   # Start the web server
-  docker run -h test.host -d --volume $TEST_DIR:/var/www/html -p $TEST_PORT:80 $IMAGE_NAME || exit 1
+  docker run -h test.host -d --volume $TEST_DIR:/var/www/html -p $TEST_PORT:80 $IMAGE_NAME > /tmp/$IMAGE_NAME.cid || exit 1
   echo ""
 
   # Spent up to a minute trying to connect to the web server
@@ -108,6 +108,9 @@ if [ "$IMAGE_FLAVOUR" == "apache" ]; then
     sleep $timeout
     attempt=$(( attempt + 1 ))
   done
+
+  # Stop the web server
+  cat /tmp/$IMAGE_NAME.cid | xargs docker rm -f && rm /tmp/$IMAGE_NAME.cid
 
   if [ "$attempt" -eq "$max_attempts" ]; then
     echo ""
