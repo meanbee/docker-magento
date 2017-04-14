@@ -18,42 +18,7 @@ A collection of Docker images for running Magento application web servers and co
 
 Since Magento requires several services working together, it recommended to use docker-compose with these images.
 
-A sample `docker-compose.yml` configuration:
-
-    web:
-      image: meanbee/magento:5.6-apache
-      hostname: magento.docker
-      environment:
-        - DOCKER_FIX=
-        - VIRTUAL_HOST=magento.docker
-        - ENABLE_SENDMAIL=true
-      volumes:
-        - ./src:/var/www/html
-      ports:
-        - 80
-        - 443
-      links:
-        - db
-
-    db:
-      image: mysql/mysql-server:5.6
-      environment:
-        - MYSQL_ROOT_PASSWORD=root
-        - MYSQL_DATABASE=magento
-      ports:
-        - 3306
-
-    cron:
-      image: meanbee/magento:5.6-cli
-      hostname: magento-cron.docker
-      working_dir: /var/www/html
-      command: /run-cron.sh
-      environment:
-        - ENABLE_SENDMAIL=true
-      volumes:
-        - ./src:/var/www/html
-      links:
-        - db
+See [docker-compose.yml](docker-compose.yml) for a sample configuration.
 
 # Options
 
@@ -71,6 +36,27 @@ Xdebug is installed and enabled on all the images by default. To configure it fo
 the container with the following environment variable set (replacing the `{}` placeholders with appropriate values):
 
     XDEBUG_CONFIG="remote_host={IP_ADDRESS} idekey={IDEKEY}"
+
+# Command Line Tools
+
+The `cli` images have a number of useful Magento tools pre-installed:
+
+- [composer](https://getcomposer.org/) - Install and manage PHP package dependencies
+- [mageconfigsync](https://github.com/punkstar/mageconfigsync) - Backup and restore Magento System Configuration
+- [magedbm](https://github.com/meanbee/magedbm) - Create development backups of the Magento database using S3 and import them
+- magemm - Sync media images from an S3 backup
+- [modman](https://github.com/colinmollenhour/modman) - Install Magento extensions
+- [magerun](https://github.com/netz98/n98-magerun) - Run command line commands in Magento
+
+All of the installed tools run in the working directory of the container, so don't forget to set it using the `working_dir` service configuration option in `docker-compose.yml` or the `--workdir` parameter to `docker run`.
+
+Some of the commands use additional environment variables for configuration:
+
+ - `AWS_ACCESS_KEY_ID` _(magedbm, magemm)_ Credentials for S3 connections
+ - `AWS_SECRET_ACCESS_KEY` _(magedbm, magemm)_ Credentials for S3 connections
+ - `AWS_REGION` _(magedbm, magemm)_ S3 region to use
+ - `AWS_BUCKET` _(magedbm)_ S3 bucket to use for database backups
+ - `AWS_MEDIA_BUCKET` _(magemm)_ S3 bucket to fetch media images from
 
 # Building
 
