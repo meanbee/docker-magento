@@ -24,6 +24,15 @@
         "php_ext_memcached_version": "2.2.0",
         "php_ext_ioncube_version": "5.5"
       },
+      "bin/magerun": {
+        "executable": true
+      },
+      "bin/magedbm": {
+        "executable": true
+      },
+      "bin/magemm": {
+        "executable": true
+      },
       "entrypoint.sh": {
         "include_cron": true,
         "executable": true
@@ -74,6 +83,15 @@
         "php_ext_memcached_version": "2.2.0",
         "php_ext_ioncube_version": "5.6"
       },
+      "bin/magerun": {
+        "executable": true
+      },
+      "bin/magedbm": {
+        "executable": true
+      },
+      "bin/magemm": {
+        "executable": true
+      },
       "entrypoint.sh": {
         "include_cron": true,
         "executable": true
@@ -123,6 +141,15 @@
         "php_ext_acpu_version": "5.1.7",
         "php_ext_memcached_version": "3.0.3",
         "php_ext_ioncube_version": "7.0"
+      },
+      "bin/magerun": {
+        "executable": true
+      },
+      "bin/magedbm": {
+        "executable": true
+      },
+      "bin/magemm": {
+        "executable": true
       },
       "entrypoint.sh": {
         "include_cron": true,
