@@ -1,8 +1,8 @@
 FROM php:5.5-cli
-
 MAINTAINER Tomas Gerulaitis <tomas.gerulaitis@meanbee.com>
 
 ENV PHP_EXT_APCU_VERSION "4.0.11"
+ENV PHP_EXT_MEMCACHED_VERSION "2.2.0"
 RUN build_packages="libmcrypt-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-dev libxml2-dev libxslt1-dev libmemcached-dev sendmail-bin sendmail libicu-dev" \
     && apt-get update && apt-get install -y $build_packages \
     && yes "" | pecl install apcu-$PHP_EXT_APCU_VERSION && docker-php-ext-enable apcu \
@@ -10,28 +10,15 @@ RUN build_packages="libmcrypt-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-
     && docker-php-ext-install gd \
     && docker-php-ext-install mbstring \
     && docker-php-ext-install mcrypt \
+    && echo "no" | pecl install memcached-$PHP_EXT_MEMCACHED_VERSION && docker-php-ext-enable memcached \
     && docker-php-ext-install pcntl \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install soap \
+    && yes | pecl install xdebug && docker-php-ext-enable xdebug \
     && docker-php-ext-install xsl \
     && docker-php-ext-install zip \
     && docker-php-ext-install intl \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-RUN apt-get update \
-  && echo "no" | pecl install memcached && docker-php-ext-enable memcached \
-  && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-RUN yes | pecl install xdebug && docker-php-ext-enable xdebug
-
-RUN apt-get update \
-    && apt-get install -y cron rsyslog \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-ADD run-cron.sh /run-cron.sh
-
-COPY php.ini /usr/local/etc/php/conf.d/zz-magento.ini
-
 
 ENV ION_CUBE_PHP_VERSION "5.5"
 RUN PHP_EXTENSION_DIR="$(php-config --extension-dir)" bash -c 'curl http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz -o /ioncube_loaders_lin_x86-64.tar.gz && \
@@ -40,7 +27,15 @@ RUN PHP_EXTENSION_DIR="$(php-config --extension-dir)" bash -c 'curl http://downl
     echo "zend_extension=${PHP_EXTENSION_DIR}/ioncube_loader_lin_${ION_CUBE_PHP_VERSION}.so" > /usr/local/etc/php/conf.d/00-ioncube.ini && \
     rm -rf /ioncube /ioncube_loaders_lin_x86-64.tar.gz'
 
+COPY php.ini /usr/local/etc/php/conf.d/zz-magento.ini
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
+RUN apt-get update \
+    && apt-get install -y cron rsyslog \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+ADD run-cron.sh /run-cron.sh
+
+CMD ["php", "-a"]

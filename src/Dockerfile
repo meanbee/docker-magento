@@ -1,8 +1,9 @@
-FROM php:5.5-fpm
+FROM <?php printf("php:%s-%s", $version, $flavour) ?>
+
 MAINTAINER Tomas Gerulaitis <tomas.gerulaitis@meanbee.com>
 
-ENV PHP_EXT_APCU_VERSION "4.0.11"
-ENV PHP_EXT_MEMCACHED_VERSION "2.2.0"
+ENV PHP_EXT_APCU_VERSION "<?php echo $php_ext_acpu_version ?>"
+ENV PHP_EXT_MEMCACHED_VERSION "<?php echo $php_ext_memcached_version ?>"
 RUN build_packages="libmcrypt-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-dev libxml2-dev libxslt1-dev libmemcached-dev sendmail-bin sendmail libicu-dev" \
     && apt-get update && apt-get install -y $build_packages \
     && yes "" | pecl install apcu-$PHP_EXT_APCU_VERSION && docker-php-ext-enable apcu \
@@ -20,7 +21,7 @@ RUN build_packages="libmcrypt-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-
     && docker-php-ext-install intl \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV ION_CUBE_PHP_VERSION "5.5"
+ENV ION_CUBE_PHP_VERSION "<?php echo $php_ext_ioncube_version ?>"
 RUN PHP_EXTENSION_DIR="$(php-config --extension-dir)" bash -c 'curl http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz -o /ioncube_loaders_lin_x86-64.tar.gz && \
     tar -xzvf /ioncube_loaders_lin_x86-64.tar.gz -C / && \
     cp "/ioncube/ioncube_loader_lin_${ION_CUBE_PHP_VERSION}.so" $PHP_EXTENSION_DIR && \
@@ -31,5 +32,3 @@ COPY php.ini /usr/local/etc/php/conf.d/zz-magento.ini
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
-
-CMD ["php-fpm"]
