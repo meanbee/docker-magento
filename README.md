@@ -1,5 +1,7 @@
 # meanbee/magento
 
+[![Build Status](https://travis-ci.org/meanbee/docker-magento.svg?branch=master)](https://travis-ci.org/meanbee/docker-magento)
+
 A collection of Docker images for running Magento application web servers and command line tools.
 
 # Supported tags and respective `Dockerfile` links
