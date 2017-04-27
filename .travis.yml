@@ -16,4 +16,4 @@ env:
     - PHP_VERSION=7.0 IMAGE_FLAVOUR=fpm
 
 script:
-  - bash test-runner.sh
+  - travis_wait 20 bash test-runner.sh
