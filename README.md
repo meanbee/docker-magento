@@ -1,6 +1,9 @@
 # meanbee/magento
 
-[![Build Status](https://travis-ci.org/meanbee/docker-magento.svg?branch=master)](https://travis-ci.org/meanbee/docker-magento)
+[![Build Status][ico-travis]][link-travis]
+[![Docker Build Status][ico-dockerbuild]][link-dockerhub]
+[![Docker Pulls][ico-downloads]][link-dockerhub]
+[![Docker Stars][ico-dockerstars]][link-dockerhub]
 
 A collection of Docker images for running Magento application web servers and command line tools.
 
@@ -92,3 +95,11 @@ The source template for each target file is selected from the `src/` directory u
 4. `<target-file-name>`
 
 Individual templates may include other templates as partials.
+
+[ico-travis]: https://img.shields.io/travis/meanbee/docker-magento.svg?style=flat-square
+[ico-dockerbuild]: https://img.shields.io/docker/build/meanbee/magento.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/docker/pulls/meanbee/magento.svg?style=flat-square
+[ico-dockerstars]: https://img.shields.io/docker/stars/meanbee/magento.svg?style=flat-square
+
+[link-travis]: https://travis-ci.org/meanbee/docker-magento
+[link-dockerhub]: https://hub.docker.com/r/meanbee/magento/
