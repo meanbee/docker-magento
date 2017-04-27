@@ -2,7 +2,7 @@
 
 [ "$DEBUG" = "true" ] && set -x
 
-<?php if ($include_cron): ?>
+<?php if (!empty($include_cron)): ?>
 CRON_LOG=/var/log/cron.log
 
 # Setup Magento cron
