@@ -1,9 +1,8 @@
-FROM <?php printf("php:%s-%s", $version, $flavour) ?>
-
+FROM php:7.1-apache
 MAINTAINER Tomas Gerulaitis <tomas.gerulaitis@meanbee.com>
 
-ENV PHP_EXT_APCU_VERSION "<?php echo $php_ext_acpu_version ?>"
-ENV PHP_EXT_MEMCACHED_VERSION "<?php echo $php_ext_memcached_version ?>"
+ENV PHP_EXT_APCU_VERSION "5.1.7"
+ENV PHP_EXT_MEMCACHED_VERSION "3.0.3"
 RUN build_packages="libmcrypt-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-dev libxml2-dev libxslt1-dev libmemcached-dev sendmail-bin sendmail libicu-dev" \
     && apt-get update && apt-get install -y $build_packages \
     && yes "" | pecl install apcu-$PHP_EXT_APCU_VERSION && docker-php-ext-enable apcu \
@@ -21,16 +20,14 @@ RUN build_packages="libmcrypt-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-
     && docker-php-ext-install intl \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-<?php if (isset($php_ext_ioncube_version)): ?>
-ENV ION_CUBE_PHP_VERSION "<?php echo $php_ext_ioncube_version ?>"
-RUN PHP_EXTENSION_DIR="$(php-config --extension-dir)" bash -c 'curl http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz -o /ioncube_loaders_lin_x86-64.tar.gz && \
-    tar -xzvf /ioncube_loaders_lin_x86-64.tar.gz -C / && \
-    cp "/ioncube/ioncube_loader_lin_${ION_CUBE_PHP_VERSION}.so" $PHP_EXTENSION_DIR && \
-    echo "zend_extension=${PHP_EXTENSION_DIR}/ioncube_loader_lin_${ION_CUBE_PHP_VERSION}.so" > /usr/local/etc/php/conf.d/00-ioncube.ini && \
-    rm -rf /ioncube /ioncube_loaders_lin_x86-64.tar.gz'
-<?php endif; ?>
 
 COPY php.ini /usr/local/etc/php/conf.d/zz-magento.ini
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
+
+RUN a2enmod rewrite headers
+
+COPY magento.conf /etc/apache2/conf-enabled/
+
+CMD ["apache2-foreground"]

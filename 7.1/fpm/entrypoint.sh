@@ -2,17 +2,6 @@
 
 [ "$DEBUG" = "true" ] && set -x
 
-<?php if (!empty($include_cron)): ?>
-CRON_LOG=/var/log/cron.log
-
-# Setup Magento cron
-echo "* * * * * root su www-data -s /bin/bash -c 'sh $(pwd)/cron.sh'" > /etc/cron.d/magento
-
-# Get rsyslog running for cron output
-touch $CRON_LOG
-echo "cron.* $CRON_LOG" > /etc/rsyslog.d/cron.conf
-service rsyslog start
-<?php endif; ?>
 
 # Configure Sendmail if required
 if [ "$ENABLE_SENDMAIL" == "true" ]; then
