@@ -34,6 +34,9 @@ ENTRYPOINT ["/entrypoint.sh"]
 
 RUN a2enmod rewrite headers
 
+RUN curl -o /usr/bin/magerun https://files.magerun.net/n98-magerun-latest.phar \
+    && chmod +x /usr/bin/magerun
+
 COPY magento.conf /etc/apache2/conf-enabled/
 
 CMD ["apache2-foreground"]
