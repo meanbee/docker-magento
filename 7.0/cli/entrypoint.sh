@@ -5,7 +5,8 @@
 CRON_LOG=/var/log/cron.log
 
 # Setup Magento cron
-echo "* * * * * root su www-data -s /bin/bash -c 'sh $(pwd)/cron.sh'" > /etc/cron.d/magento
+# See: http://devdocs.magento.com/guides/v2.1/config-guide/cli/config-cli-subcommands-cron.html
+echo "* * * * * root su www-data -s /bin/bash -c '$(pwd)/bin/magento cron:run | grep -v \"Ran jobs by schedule\"'" > /etc/cron.d/magento
 
 # Get rsyslog running for cron output
 touch $CRON_LOG
