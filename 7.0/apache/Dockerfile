@@ -3,6 +3,8 @@ MAINTAINER Tomas Gerulaitis <tomas.gerulaitis@meanbee.com>
 
 ENV PHP_EXT_APCU_VERSION "5.1.7"
 ENV PHP_EXT_MEMCACHED_VERSION "3.0.3"
+ENV PHP_EXT_XDEBUG_VERSION "2.6.0"
+
 RUN build_packages="libmcrypt-dev libpng-dev libfreetype6-dev libjpeg62-turbo-dev libxml2-dev libxslt1-dev libmemcached-dev sendmail-bin sendmail libicu-dev" \
     && apt-get update && apt-get install -y $build_packages \
     && yes "" | pecl install apcu-$PHP_EXT_APCU_VERSION && docker-php-ext-enable apcu \
@@ -14,7 +16,7 @@ RUN build_packages="libmcrypt-dev libpng-dev libfreetype6-dev libjpeg62-turbo-de
     && docker-php-ext-install pcntl \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install soap \
-    && yes | pecl install xdebug && docker-php-ext-enable xdebug \
+    && yes | pecl install xdebug-$PHP_EXT_XDEBUG_VERSION && docker-php-ext-enable xdebug \
     && docker-php-ext-install xsl \
     && docker-php-ext-install zip \
     && docker-php-ext-install intl \
