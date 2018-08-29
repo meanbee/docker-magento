@@ -40,7 +40,7 @@ RUN apt-get update \
     && pip install awscli \
     && curl --retry 10 --retry-delay 3 https://getcomposer.org/installer | php -- --install-dir=$BIN_DIR --filename=composer \
     && curl --retry 10 --retry-delay 3 -L https://github.com/punkstar/mageconfigsync/releases/download/0.4.0/mageconfigsync-0.4.0.phar -o $BIN_DIR/mageconfigsync && chmod +x $BIN_DIR/mageconfigsync \
-    && curl --retry 10 --retry-delay 3 https://s3-eu-west-1.amazonaws.com/magedbm-releases/magedbm.phar -o $BIN_DIR/magedbm.phar && chmod +x $BIN_DIR/magedbm.phar \
+    && curl --retry 10 --retry-delay 3 -L https://github.com/meanbee/magedbm/releases/download/v1.6.0/magedbm.phar -o $BIN_DIR/magedbm.phar && chmod +x $BIN_DIR/magedbm.phar \
     && curl --retry 10 --retry-delay 3 https://files.magerun.net/n98-magerun.phar -o $BIN_DIR/n98-magerun.phar && chmod +x $BIN_DIR/n98-magerun.phar \
     && curl --retry 10 --retry-delay 3 https://raw.githubusercontent.com/colinmollenhour/modman/master/modman -o $BIN_DIR/modman && chmod +x $BIN_DIR/modman \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
