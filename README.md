@@ -44,6 +44,11 @@ Xdebug is installed and enabled on all the images by default. To configure it fo
 the container with the following environment variable set (replacing the `{}` placeholders with appropriate values):
 
     XDEBUG_CONFIG="remote_host={IP_ADDRESS} idekey={IDEKEY}"
+    
+# Xdebug docker
+You need to add an environment variable inside docker-compose-common to enable exdebug to work with PHPStorm
+
+    XDEBUG_CONFIG: "remote_connect_back=1 idekey=phpstorm remote_enable=1"
 
 # Command Line Tools
 
