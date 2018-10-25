@@ -131,7 +131,7 @@
         "php_ext_acpu_version": "5.1.7",
         "php_ext_memcached_version": "3.0.3",
         "php_ext_ioncube_version": "7.0",
-        "php_ext_xdebug_version": "2.6.0"
+        "php_ext_xdebug_version": "2.6.1"
       },
       "entrypoint.sh": {
         "executable": true
@@ -148,7 +148,7 @@
         "php_ext_acpu_version": "5.1.7",
         "php_ext_memcached_version": "3.0.3",
         "php_ext_ioncube_version": "7.0",
-        "php_ext_xdebug_version": "2.6.0"
+        "php_ext_xdebug_version": "2.6.1"
       },
       "bin/magerun": {
         "executable": true
@@ -177,7 +177,7 @@
         "php_ext_acpu_version": "5.1.7",
         "php_ext_memcached_version": "3.0.3",
         "php_ext_ioncube_version": "7.0",
-        "php_ext_xdebug_version": "2.6.0"
+        "php_ext_xdebug_version": "2.6.1"
       },
       "entrypoint.sh": {
         "executable": true
@@ -193,7 +193,7 @@
         "php_ext_acpu_version": "5.1.7",
         "php_ext_memcached_version": "3.0.3",
         "php_ext_ioncube_version": "7.1",
-        "php_ext_xdebug_version": "2.6.0"
+        "php_ext_xdebug_version": "2.6.1"
       },
       "entrypoint.sh": {
         "executable": true
@@ -210,7 +210,7 @@
         "php_ext_acpu_version": "5.1.7",
         "php_ext_memcached_version": "3.0.3",
         "php_ext_ioncube_version": "7.1",
-        "php_ext_xdebug_version": "2.6.0"
+        "php_ext_xdebug_version": "2.6.1"
       },
       "bin/magerun": {
         "executable": true
@@ -239,7 +239,7 @@
         "php_ext_acpu_version": "5.1.7",
         "php_ext_memcached_version": "3.0.3",
         "php_ext_ioncube_version": "7.1",
-        "php_ext_xdebug_version": "2.6.0"
+        "php_ext_xdebug_version": "2.6.1"
       },
       "entrypoint.sh": {
         "executable": true
