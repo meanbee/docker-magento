@@ -14,7 +14,11 @@ if [ "$IMAGE_FLAVOUR" == "" ]; then
 fi
 
 if [ "$DOCKER_IP" == "" ]; then
-  DOCKER_IP="$(dinghy ip)"
+  if [ "$DOCKER_MACHINE_NAME" == "dinghy" ]; then
+      DOCKER_IP="$(dinghy ip)"
+  else
+    DOCKER_IP="127.0.0.1"
+  fi
 fi
 
 ################################################################################
