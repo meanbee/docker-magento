@@ -46,7 +46,9 @@ All images have sendmail installed for emails, however it is not enabled by defa
 Xdebug is installed and enabled on all the images by default. To configure it for remote debugging, start
 the container with the following environment variable set (replacing the `{}` placeholders with appropriate values):
 
-    XDEBUG_CONFIG="remote_host={IP_ADDRESS} idekey={IDEKEY}"
+    XDEBUG_CONFIG="remote_connect_back=1 remote_enable=1 idekey={IDEKEY}"
+
+Note: If you're using PhpStorm, your IDE Key is probably `phpstorm`.
 
 # Command Line Tools
 
