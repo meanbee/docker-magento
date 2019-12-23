@@ -24,7 +24,8 @@
         "php_ext_acpu_version": "4.0.11",
         "php_ext_memcached_version": "2.2.0",
         "php_ext_ioncube_version": "5.5",
-        "php_ext_xdebug_version": "2.5.5"       
+        "php_ext_xdebug_version": "2.5.5",
+        "mysql_client_package": "mysql-client"
       },
       "bin/magerun": {
         "executable": true
@@ -86,7 +87,8 @@
         "php_ext_acpu_version": "4.0.11",
         "php_ext_memcached_version": "2.2.0",
         "php_ext_ioncube_version": "5.6",
-        "php_ext_xdebug_version": "2.5.5"
+        "php_ext_xdebug_version": "2.5.5",
+        "mysql_client_package": "mysql-client"
       },
       "bin/magerun": {
         "executable": true
@@ -148,7 +150,8 @@
         "php_ext_acpu_version": "5.1.7",
         "php_ext_memcached_version": "3.0.3",
         "php_ext_ioncube_version": "7.0",
-        "php_ext_xdebug_version": "2.6.1"
+        "php_ext_xdebug_version": "2.6.1",
+        "mysql_client_package": "mysql-client"
       },
       "bin/magerun": {
         "executable": true
@@ -210,7 +213,8 @@
         "php_ext_acpu_version": "5.1.7",
         "php_ext_memcached_version": "3.0.3",
         "php_ext_ioncube_version": "7.1",
-        "php_ext_xdebug_version": "2.6.1"
+        "php_ext_xdebug_version": "2.6.1",
+        "mysql_client_package": "default-mysql-client"
       },
       "bin/magerun": {
         "executable": true
@@ -272,7 +276,8 @@
         "php_ext_acpu_version": "5.1.12",
         "php_ext_memcached_version": "3.0.4",
         "php_ext_ioncube_version": "7.2",
-        "php_ext_xdebug_version": "2.6.1"
+        "php_ext_xdebug_version": "2.6.1",
+        "mysql_client_package": "default-mysql-client"
       },
       "bin/magerun": {
         "executable": true
