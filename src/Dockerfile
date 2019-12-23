@@ -9,9 +9,11 @@ ENV PHP_EXT_XDEBUG_VERSION "<?php echo $php_ext_xdebug_version ?>"
 <?php $buildPackages = ['libpng-dev', 'libfreetype6-dev', 'libjpeg62-turbo-dev', 'libxml2-dev', 'libxslt1-dev', 'libmemcached-dev', 'sendmail-bin', 'sendmail', 'libicu-dev'] ?>
 <?php $installMcrypt = version_compare($version, '7.2.', '<') ?>
 <?php $installLibZip = version_compare($version, '7.3', '>=') ?>
+<?php $installOniguruma = version_compare($version, '7.4', '>=') ?>
 <?php $gdNeedsDirs = version_compare($version, '7.4', '<') ?>
 <?php if ($installMcrypt): $buildPackages[] = 'libmcrypt-dev'; endif ?>
 <?php if ($installLibZip): $buildPackages[] = 'libzip-dev'; endif ?>
+<?php if ($installOniguruma): $buildPackages[] = 'libonig-dev'; endif ?>
 
 RUN build_packages="<?php echo implode(' ', $buildPackages) ?>" \
     && apt-get update && apt-get install -y $build_packages \

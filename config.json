@@ -376,5 +376,65 @@
       },
       "php.ini": {}
     }
+  },
+  "7.4-apache": {
+    "version": "7.4",
+    "flavour": "apache",
+    "files": {
+      "Dockerfile": {
+        "php_ext_acpu_version": "5.1.18",
+        "php_ext_memcached_version": "3.1.5",
+        "php_ext_xdebug_version": "2.9.0"
+      },
+      "entrypoint.sh": {
+        "executable": true
+      },
+      "magento.conf": {},
+      "php.ini": {}
+    }
+  },
+  "7.4-cli": {
+    "version": "7.4",
+    "flavour": "cli",
+    "files": {
+      "Dockerfile": {
+        "php_ext_acpu_version": "5.1.18",
+        "php_ext_memcached_version": "3.1.5",
+        "php_ext_xdebug_version": "2.9.0",
+        "mysql_client_package": "default-mysql-client"
+      },
+      "bin/magerun": {
+        "executable": true
+      },
+      "bin/magedbm": {
+        "executable": true
+      },
+      "bin/magemm": {
+        "executable": true
+      },
+      "entrypoint.sh": {
+        "include_cron": true,
+        "executable": true
+      },
+      "php.ini": {},
+      "run-cron.sh": {
+        "executable": true
+      }
+    }
+  },
+  "7.4-fpm": {
+    "version": "7.4",
+    "flavour": "fpm",
+    "files": {
+      "Dockerfile": {
+        "php_ext_acpu_version": "5.1.18",
+        "php_ext_memcached_version": "3.1.5",
+        "php_ext_xdebug_version": "2.9.0"
+      },
+      "entrypoint.sh": {
+        "executable": true
+      },
+      "php.ini": {}
+    }
   }
 }

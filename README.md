@@ -9,6 +9,9 @@ A collection of Docker images for running Magento application web servers and co
 
 # Supported tags and respective `Dockerfile` links
 
+- [`7.4-apache` (*7.4/apache/Dockerfile*)](https://github.com/meanbee/docker-magento/blob/master/7.4/apache/Dockerfile)
+- [`7.4-cli` (*7.4/cli/Dockerfile*)](https://github.com/meanbee/docker-magento/blob/master/7.4/cli/Dockerfile)
+- [`7.4-fpm` (*7.4/fpm/Dockerfile*)](https://github.com/meanbee/docker-magento/blob/master/7.4/fpm/Dockerfile)
 - [`7.3-apache` (*7.3/apache/Dockerfile*)](https://github.com/meanbee/docker-magento/blob/master/7.3/apache/Dockerfile)
 - [`7.3-cli` (*7.3/cli/Dockerfile*)](https://github.com/meanbee/docker-magento/blob/master/7.3/cli/Dockerfile)
 - [`7.3-fpm` (*7.3/fpm/Dockerfile*)](https://github.com/meanbee/docker-magento/blob/master/7.3/fpm/Dockerfile)
