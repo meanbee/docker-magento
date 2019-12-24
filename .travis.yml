@@ -27,5 +27,11 @@ env:
     - PHP_VERSION=7.3 IMAGE_FLAVOUR=fpm
     - PHP_VERSION=7.4 IMAGE_FLAVOUR=fpm
 
+jobs:
+  allow_failures:
+    - env: PHP_VERSION=7.4 IMAGE_FLAVOUR=apache
+    - env: PHP_VERSION=7.4 IMAGE_FLAVOUR=cli
+    - env: PHP_VERSION=7.4 IMAGE_FLAVOUR=fpm
+
 script:
   - travis_wait 20 bash test-runner.sh
