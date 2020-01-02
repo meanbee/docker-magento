@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+#
+#  magemm - sync media images from S3
+#
+
+set -e # Exit on error
+
+# Parameters
+#############################
+
+project=$1
+destination=$(pwd)/media/
+
+# Usage
+#############################
+
+[ "$project" = "-h" -o "$project" = "--help" ] \
+&& cat << USAGE && exit 0
+Usage: $0 project-name
+
+Sync the media images from S3 into $destination
+USAGE
+
+# Validation
+#############################
+
+[ -z "$project" ] \
+&& echo "project-name parameter required!" \
+&& exit 1
+
+[ -z "$AWS_ACCESS_KEY_ID" -o -z "$AWS_SECRET_ACCESS_KEY" -o -z "$AWS_REGION" -o -z "$AWS_MEDIA_BUCKET" ] \
+&& echo '$AWS_ACCESS_KEY_ID, $AWS_SECRET_ACCESS_KEY, $AWS_REGION and $AWS_MEDIA_BUCKET environment variables required!' \
+&& exit 1
+
+# Main
+#############################
+
+aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+aws configure set default.region $AWS_REGION
+
+exec aws s3 sync --delete s3://$AWS_MEDIA_BUCKET/$project/media/ $destination
