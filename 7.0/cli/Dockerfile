@@ -38,6 +38,7 @@ ENTRYPOINT ["/entrypoint.sh"]
 ENV BIN_DIR "/usr/local/bin"
 RUN apt-get update \
     && apt-get install -y cron git groff mysql-client python-pip rsyslog sudo \
+    && sed -i '/imklog/s/^/#/' /etc/rsyslog.conf \
     && pip install awscli \
     && curl --retry 10 --retry-delay 3 https://getcomposer.org/installer | php -- --install-dir=$BIN_DIR --filename=composer \
     && curl --retry 10 --retry-delay 3 -L https://github.com/punkstar/mageconfigsync/releases/download/0.4.0/mageconfigsync-0.4.0.phar -o $BIN_DIR/mageconfigsync && chmod +x $BIN_DIR/mageconfigsync \
