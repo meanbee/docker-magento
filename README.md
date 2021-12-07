@@ -39,6 +39,15 @@ See [docker-compose.yml](docker-compose.yml) for a sample configuration.
 
 # Options
 
+## Cron
+
+The `cli` image supports running Magento's cron task automatically. This is disabled by default but can be enabled with
+the following environment variable:
+
+    ENABLE_CRON=true
+
+*Note:* The cron container must be run as `root` (this is the default) and the cron task will automatically be run as the `www-data` user.
+
 ## Sendmail
 
 All images have sendmail installed for emails, however it is not enabled by default. To enable sendmail, use the following environment variable:

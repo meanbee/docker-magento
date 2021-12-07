@@ -24,6 +24,7 @@ services:
       - appdata
     environment:
       - ENABLE_SENDMAIL=true
+      - ENABLE_CRON=true
     links:
       - db
 

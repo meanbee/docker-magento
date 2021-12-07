@@ -2,9 +2,10 @@
 
 ENV BIN_DIR "/usr/local/bin"
 RUN apt-get update \
-    && apt-get install -y cron git groff <?php echo $mysql_client_package ?> python-pip rsyslog sudo \
+    && apt-get install -y cron git groff <?php echo $mysql_client_package ?> rsyslog sudo unzip \
+    && echo "* * * * * /var/www/html/cron.sh" | sudo -u www-data crontab - \
     && sed -i '/imklog/s/^/#/' /etc/rsyslog.conf \
-    && pip install awscli \
+    && curl --retry 10 --retry-delay 3 https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip && unzip awscliv2.zip && ./aws/install && rm -rf ./aws \
     && curl --retry 10 --retry-delay 3 https://getcomposer.org/installer | php -- --install-dir=$BIN_DIR --filename=composer \
     && curl --retry 10 --retry-delay 3 -L https://github.com/punkstar/mageconfigsync/releases/download/0.4.0/mageconfigsync-0.4.0.phar -o $BIN_DIR/mageconfigsync && chmod +x $BIN_DIR/mageconfigsync \
     && curl --retry 10 --retry-delay 3 -L https://github.com/meanbee/magedbm/releases/download/v1.6.0/magedbm.phar -o $BIN_DIR/magedbm.phar && chmod +x $BIN_DIR/magedbm.phar \
